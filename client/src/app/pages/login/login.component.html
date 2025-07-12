@@ -4,5 +4,8 @@
     <input type="email" [(ngModel)]="email" name="email" placeholder="Användarnamn" required />
     <input type="password" [(ngModel)]="password" name="password" placeholder="Lösenord" required />
     <button type="submit">Logga in</button>
+    <p style="cursor: pointer; color: blue;" [routerLink]="['/register']">
+  Registrera dig
+</p>
   </form>
 </div>

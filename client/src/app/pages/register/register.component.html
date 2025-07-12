@@ -1,0 +1,28 @@
+<div class="register-container">
+  <h2>Registrera dig</h2>
+  <form (ngSubmit)="register()" class="register-form">
+    <label for="username">Användarnamn</label>
+    <input
+      id="username"
+      [(ngModel)]="username"
+      name="username"
+      required
+      placeholder="Ange användarnamn"
+    />
+
+    <label for="password">Lösenord</label>
+    <input
+      id="password"
+      type="password"
+      [(ngModel)]="password"
+      name="password"
+      required
+      placeholder="Ange lösenord"
+    />
+
+    <button type="submit">Registrera</button>
+  </form>
+
+  <p class="success" *ngIf="message">{{ message }}</p>
+  <p class="error" *ngIf="error">{{ error }}</p>
+</div>
