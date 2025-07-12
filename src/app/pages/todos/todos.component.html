@@ -1,0 +1,12 @@
+<button style="margin: 10px;" mat-fab aria-label="Lägg till" (click)="addTodo()">
+    <mat-icon>add</mat-icon>
+</button>
+<div class="todos-container">
+    <div class="todo-note" *ngFor="let todo of todos">
+        <mat-checkbox [(ngModel)]="todo.done" class="todo-checkbox"></mat-checkbox>
+        <textarea [(ngModel)]="todo.text" placeholder="Skriv din todo här..."></textarea>
+        <button mat-icon-button color="warn" (click)="removeTodo(todo.id)" aria-label="Ta bort todo">
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+</div>

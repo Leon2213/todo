@@ -1,0 +1,41 @@
+.todos-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 16px;
+}
+
+.todo-note {
+  position: relative;
+  background: #fffbcc;
+  border: 1px solid #f0e68c;
+  border-radius: 8px;
+  width: 200px;
+  padding: 40px 16px 16px 40px;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.todo-checkbox {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+}
+
+.todo-note textarea {
+  flex-grow: 1;
+  border: none;
+  background: transparent;
+  resize: none;
+  font-size: 14px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  outline: none;
+  height: 100px;
+}
+
+.todo-note button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}

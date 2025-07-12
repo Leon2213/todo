@@ -1,0 +1,28 @@
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 0 16px;
+  background-color: #76a5f7;
+}
+
+.knapprad {
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
+}
+
+.white-text {
+  color: white !important;
+
+}
+
+.logotext {
+  font-weight: 1.5;
+  font-size: 1.4rem;
+}
+
+.navbuttontext {
+  font-weight: 1.2;
+  font-size: 1.2rem;
+}

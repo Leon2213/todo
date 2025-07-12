@@ -1,0 +1,11 @@
+<mat-toolbar class="toolbar">
+  <span class="white-text logotext">NotesApp 📝</span>
+  <div class="knapprad">
+    <button mat-button class="left white-text navbuttontext" routerLink="/todos">Mina Todos</button>
+    <button mat-button class="white-text navbuttontext" *ngIf="!authService.isAuthenticated()" routerLink="/login">Logga in</button>
+    <button mat-button class="white-text navbuttontext" *ngIf="authService.isAuthenticated()" (click)="authService.logout()">Logga ut</button>
+  </div>
+  
+</mat-toolbar>
+
+<router-outlet></router-outlet>

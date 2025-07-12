@@ -1,0 +1,8 @@
+<div class="login-container" [ngClass]="{'shake': shakeAnimation}">
+  <h2>Logga in</h2>
+  <form (ngSubmit)="onLogin()" class="login-form">
+    <input type="email" [(ngModel)]="email" name="email" placeholder="Användarnamn" required />
+    <input type="password" [(ngModel)]="password" name="password" placeholder="Lösenord" required />
+    <button type="submit">Logga in</button>
+  </form>
+</div>
