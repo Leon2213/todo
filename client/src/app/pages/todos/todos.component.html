@@ -1,12 +1,28 @@
 <button style="margin: 10px;" mat-fab aria-label="Lägg till" (click)="addTodo()">
     <mat-icon>add</mat-icon>
 </button>
-<div class="todos-container">
-    <div class="todo-note" *ngFor="let todo of todos">
-        <mat-checkbox [(ngModel)]="todo.done" class="todo-checkbox"></mat-checkbox>
-        <textarea [(ngModel)]="todo.text" placeholder="Skriv din todo här..."></textarea>
+<div class="todos-container" cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="drop($event)">
+    <div class="todo-note" [style.background]="todo.color || '#fffbcc'" cdkDrag [class.done]="todo.done" *ngFor="let todo of todos">
+        <mat-checkbox [(ngModel)]="todo.done" 
+                      (change)="saveTodo(todo)" 
+                      class="todo-checkbox"></mat-checkbox>
+        <textarea [(ngModel)]="todo.content" 
+                  (blur)="saveTodo(todo)" 
+                  placeholder="Skriv din todo här..."
+                  [disabled]="todo.done"></textarea>
         <button mat-icon-button color="warn" (click)="removeTodo(todo.id)" aria-label="Ta bort todo">
             <mat-icon>close</mat-icon>
         </button>
+        <button mat-icon-button aria-label="Välj färg" (click)="toggleColorPicker(todo)"
+            [style.background]="todo.color || '#fffbcc'" class="color-circle-button">
+        </button>
+        <ng-template cdkDragPlaceholder>
+            <div class="todo-note placeholder"></div>
+        </ng-template>
+        <div class="color-palette" *ngIf="colorPickerVisibleForTodoId === todo.id">
+            <div *ngFor="let color of colorOptions" class="color-circle" [style.background]="color"
+                (click)="selectColor(todo, color)">
+            </div>
+        </div>
     </div>
 </div>

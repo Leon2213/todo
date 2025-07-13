@@ -14,6 +14,11 @@ public class Note {
 
     private String content;
 
+    private boolean done;
+
+    @Column(name = "position")
+    private Integer position;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;

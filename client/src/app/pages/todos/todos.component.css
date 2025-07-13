@@ -15,6 +15,20 @@
   box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
   display: flex;
   flex-direction: column;
+  transition: all 0.3s ease;
+}
+
+.todo-note.placeholder {
+  opacity: 0.4;
+  background: #f9f9f9;
+}
+
+
+.todo-note.done {
+  background: #e8e8e8;
+  border-color: #c0c0c0;
+  opacity: 0.6;
+  transform: scale(0.98);
 }
 
 .todo-checkbox {
@@ -32,6 +46,13 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   outline: none;
   height: 100px;
+  transition: all 0.3s ease;
+}
+
+/* Styling för avklarade todos textarea */
+.todo-note.done textarea {
+  color: #888;
+  background: re8e8e8;
 }
 
 .todo-note button {
@@ -39,3 +60,40 @@
   top: 8px;
   right: 8px;
 }
+
+.color-palette {
+  position: absolute;
+  bottom: 8px; /* justera efter behov så paletten hamnar under knappen */
+  right: 60px;
+  left: 60px;
+  display: flex;
+  gap: 8px;
+  padding: 4px;
+  z-index: 10; /* så den hamnar över andra element */
+  width: max-content;
+}
+
+
+.color-circle {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 1px solid #999;
+}
+
+.color-circle-button {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 0;
+  outline: none;
+  box-sizing: border-box;
+  vertical-align: middle;
+}
+
+.color-circle-button:hover {
+  border-color: #666;
+}
+

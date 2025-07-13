@@ -15,6 +15,7 @@ import { NotificationService } from '../../services/notification.service';
   standalone: true,
   imports: [FormsModule, CommonModule, MatFormFieldModule, RouterModule],
 })
+
 export class LoginComponent {
   email = '';
   password = '';
@@ -36,13 +37,8 @@ export class LoginComponent {
     }
   }
 
-
-
   isLoggedIn(): boolean {
     return this.authservice.isAuthenticated();
   }
-
-
-
 
 }

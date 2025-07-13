@@ -8,18 +8,37 @@ import { firstValueFrom } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class AuthService {
 
+
   constructor(private router: Router,
     private notificationService: NotificationService,
     private http: HttpClient) {
     const saved = localStorage.getItem('loggedIn');
   }
 
-  loginOld(email: string, password: string): boolean {
-    if (email === "adm" && password === "test") {
-      localStorage.setItem('loggedIn', 'true');
+  getToken(): string | null {
+    return localStorage.getItem('jwt');
+  }
+
+  register(username: string, password: string) {
+    return this.http.post('http://localhost:8080/api/auth/register',
+      { username, password },
+      { responseType: 'text' }
+    );
+  }
+
+  logout(): void {
+    localStorage.setItem('loggedIn', 'false');
+    this.router.navigate(['/login']);
+    this.notificationService.showMessage("Du loggades ut.");
+
+  }
+
+  isAuthenticated(): boolean {
+    if (localStorage.getItem('loggedIn') === 'true') {
       return true;
+    } else {
+      return false;
     }
-    return false;
   }
 
   async login(username: string, password: string): Promise<boolean> {
@@ -43,34 +62,5 @@ export class AuthService {
       console.error('Inloggningsfel:', error);
       return false;
     }
-  }
-
-
-
-  register(username: string, password: string) {
-  return this.http.post('http://localhost:8080/api/auth/register',
-    { username, password },
-    { responseType: 'text' }  // <== Lägg till detta
-  );
-}
-
-
-
-
-
-  logout(): void {
-    localStorage.setItem('loggedIn', 'false');
-    this.router.navigate(['/login']);
-    this.notificationService.showMessage("Du loggades ut.");
-
-  }
-
-  isAuthenticated(): boolean {
-    if (localStorage.getItem('loggedIn') === 'true') {
-      return true;
-    } else {
-      return false;
-    }
-
   }
 }
